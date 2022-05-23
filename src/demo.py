@@ -9,7 +9,7 @@ import os
 import torch
 from models import ASTModel
 # download pretrained model in this directory
-os.environ['TORCH_HOME'] = '../pretrained_models'
+os.environ['TORCH_HOME'] = '/home/mo/workspace/mo/ast/pretrained_models'
 # assume each input spectrogram has 100 time frames
 input_tdim = 100
 # assume the task has 527 classes

@@ -8,7 +8,7 @@
 # get the ensemble result
 
 import os, sys, argparse
-parentdir = str(os.path.abspath(os.path.join(__file__ ,"../../..")))+'/src'
+parentdir = '/home/mo/workspace/mo/ast/src'
 sys.path.append(parentdir)
 
 import dataloader

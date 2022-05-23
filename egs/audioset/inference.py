@@ -11,7 +11,7 @@ import numpy as np
 import torch
 import torchaudio
 
-torchaudio.set_audio_backend("soundfile")       # switch backend
+torchaudio.set_audio_backend("soundfile")  # switch backend
 basepath = os.path.dirname(os.path.dirname(sys.path[0]))
 sys.path.append(basepath)
 from src.models import ASTModel
@@ -69,15 +69,15 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    label_csv = './data/class_labels_indices.csv'       # label and indices for audioset data
+    label_csv = './data/class_labels_indices.csv'  # label and indices for audioset data
 
     # 1. make feature for predict
     audio_path = args.audio_path
-    feats = make_features(audio_path, mel_bins=128)           # shape(1024, 128)
+    feats = make_features(audio_path, mel_bins=128)  # shape(1024, 128)
 
     # assume each input spectrogram has 100 time frames
     input_tdim = feats.shape[0]
-
+    print(f' input_tdim: {input_tdim}')
     # 2. load the best model and the weights
     checkpoint_path = args.model_path
     ast_mdl = ASTModel(label_dim=527, input_tdim=input_tdim, imagenet_pretrain=False, audioset_pretrain=False)
@@ -89,9 +89,9 @@ if __name__ == '__main__':
     audio_model = audio_model.to(torch.device("cuda:0"))
 
     # 3. feed the data feature to model
-    feats_data = feats.expand(1, input_tdim, 128)           # reshape the feature
-
-    audio_model.eval()                                      # set the eval model
+    feats_data = feats.expand(1, input_tdim, 128)  # reshape the feature
+    print(f' feats_data:{feats_data.size()}')
+    audio_model.eval()  # set the eval model
     with torch.no_grad():
         output = audio_model.forward(feats_data)
         output = torch.sigmoid(output)
