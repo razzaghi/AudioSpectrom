@@ -79,7 +79,7 @@ class AudioSpectrum:
     def Evaluate_Frames(self,waveform):
         result = {}
         label_results={}
-        result["is_humwn"] = False
+        result["is_human"] = False
         feats_data = self.make_features(waveform)
         self.audio_model.eval()  # set the eval model
         with torch.no_grad():
