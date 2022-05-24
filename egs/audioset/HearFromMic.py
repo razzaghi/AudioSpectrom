@@ -92,7 +92,7 @@ class AudioSpectrum:
             percent=int(result_output[sorted_indexes[k]] * 100.)
             label_results[r_label] = percent
             if r_label=='Speech' and percent >= 25 :
-                result["is_humwn"] = True
+                result["is_human"] = True
         result["sound_labels"] =label_results
         return result
 
@@ -134,7 +134,7 @@ if __name__ == '__main__':
         waveform = MyAudioSpectrum.convert_frames_to_tensor(frames)
         result=MyAudioSpectrum.Evaluate_Frames(waveform)
         label_results=result["sound_labels"]
-        print('[*INFO] predict results:')
+        print('[*INFO] predict results,is human:{}'.format(result["is_human"]))
         for label in label_results:
             print('{}: %{}'.format(label,label_results[label]))
 
