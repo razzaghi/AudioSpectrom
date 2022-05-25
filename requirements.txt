@@ -5,10 +5,10 @@ numpy
 scikit-learn
 scipy
 sklearn
-timm
-torch
-torchaudio
-torchvision
+timm==0.4.5
+torch==1.11.0+cu102
+torchaudio==0.11.0
+torchvision==0.12.0+cu102
 wget
 zipp
 pyaudio
