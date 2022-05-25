@@ -11,3 +11,5 @@ torchaudio
 torchvision
 wget
 zipp
+pyaudio
+soundfile
